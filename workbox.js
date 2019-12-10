@@ -87,6 +87,20 @@ workbox.routing.registerRoute(
   })
 );
 
+workbox.routing.registerRoute(
+  /^https:\/\/code\.jquery\.com/,
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'jquery',
+  })
+);
+
+// unpkg.com
+workbox.routing.registerRoute(
+  /^https:\/\/unpkg\.com/,
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'sweetalert',
+  })
+);
 
 // Menyimpan cache untuk file font selama 1 tahun
 workbox.routing.registerRoute(

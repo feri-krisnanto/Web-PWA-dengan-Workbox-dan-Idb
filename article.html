@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
     <!-- Navigasi -->
@@ -79,10 +80,9 @@
         }
 
         save.onclick = function() {
-          console.log("Tombol FAB di klik.", item);
           item.then(function(article) {
-            console.log('article : ', article)
             saveForLater(article);
+            swal("Has Been Bookmark!");
           });
         };
       });

@@ -6,17 +6,15 @@ var dbPromise = idb.open("perpustakaan", 2, function(upgradeDb) {
 });
 
 function saveForLater(article) {
+    // dbPromise.get(article)
+
     dbPromise.then(function(db) {
         var tx = db.transaction('buku', 'readwrite');
         var store = tx.objectStore('buku');
-        var item = {
-            judul: 'Menjadi Android Developer Expert (MADE)',
-            isbn: 123456789,
-            description: 'Belajar pemrograman Android di Dicoding dengan modul online dan buku.',
-            created: new Date().getTime()
-        };
-        store.add(article); //menambahkan key "buku"
+        
+        store.put(article); 
         return tx.complete;
+        
     }).then(function() {
         console.log('Buku berhasil disimpan.');
     }).catch(function() {
